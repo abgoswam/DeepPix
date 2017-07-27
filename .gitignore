@@ -8,3 +8,7 @@ trials/code/a3/cs231n/datasets/imagenet_val_25.npz*
 trials/code/a3/cs231n/datasets/coco_captioning/
 trials/code/a3/cs231n/__pycache__/
 
+trials/text-to-image/Utils/__pycache__/
+trials/text-to-image/__pycache__/
+
+
