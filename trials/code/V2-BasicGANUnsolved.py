@@ -131,6 +131,7 @@ def leaky_relu(x, alpha=0.01):
     """
     # TODO: implement leaky ReLU
     pass
+    return tf.maximum(x, alpha*x) 
 
 
 # Test your leaky ReLU implementation. You should get errors < 1e-10
@@ -164,6 +165,7 @@ def sample_noise(batch_size, dim):
     """
     # TODO: sample and return noise
     pass
+    return tf.random_uniform([batch_size,dim], minval=-1, maxval=1)
 
 
 # Make sure noise is the correct shape and type:
@@ -219,6 +221,13 @@ def discriminator(x):
     with tf.variable_scope("discriminator"):
         # TODO: implement architecture
         pass
+        fc1_256 = tf.layers.dense(inputs=x, units=256)
+        fc1_256_activation = leaky_relu(fc1_256, 0.01)
+        
+        fc2_256 = tf.layers.dense(inputs=fc1_256_activation, units=256)
+        fc2_256_activation = leaky_relu(fc2_256, 0.01)
+        
+        logits = tf.layers.dense(inputs=fc2_256_activation, units=1)
         return logits
 
 
@@ -264,8 +273,11 @@ def generator(z):
     with tf.variable_scope("generator"):
         # TODO: implement architecture
         pass
+        fc1_1024 = tf.layers.dense(inputs=z, units=1024, activation=tf.nn.relu)
+        fc2_1024 = tf.layers.dense(inputs=fc1_1024, units=1024, activation=tf.nn.relu)     
+        img = tf.layers.dense(inputs=fc2_1024, units=784, activation=tf.nn.tanh)
+        
         return img
-
 
 # Test to make sure the number of parameters in the generator is correct:
 
