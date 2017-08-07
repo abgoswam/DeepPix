@@ -1,0 +1,3 @@
+[submodule "trials/icml2016"]
+	path = trials/icml2016
+	url = https://github.com/reedscot/icml2016
