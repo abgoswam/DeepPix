@@ -156,7 +156,7 @@ def main():
 
 	for x in tf.global_variables():
 		print(x)
-		print(sess.run(x))        
+		#print(sess.run(x))        
 
 def load_training_data(data_dir, data_set):
 	if data_set == 'flowers':
